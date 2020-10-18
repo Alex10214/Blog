@@ -11,11 +11,6 @@ body{
   background-color: white;
 }
 
-.custom-header{
-  background: #ebecef;
-  height: 70px;
-}
-
 h1,h2,h3,h4,h5,h6{
   margin: 0;
 }
@@ -24,8 +19,8 @@ h1,h2,h3,h4,h5,h6{
   width: 100%;
 }
 
-.custom-title-m10{
-  margin: 10px;
+.buttons-full-width-inp input{
+  width: 100%;
 }
 
 a{
@@ -39,4 +34,21 @@ a:hover{
 
 ul{
   list-style-type: none;
+}
+
+.custom-header{
+  background: #ebecef;
+  height: 70px;
+}
+
+.custom-title-m10{
+  margin: 10px;
+}
+
+.custom-title-mb10{
+  margin-bottom: 10px;
+}
+
+.form-control{
+  height: auto;
 }
