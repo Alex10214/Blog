@@ -1,2 +1,19 @@
-<p>admin-layout works!</p>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 custom-header d-flex align-items-center justify-content-between">
+      <nav>
+        <a routerLink="/admin"><h1>Blog-admin</h1></a>
+      </nav>
+      <ul>
+        <li routerLinkActive="active"><a [routerLink]="['dashboard']">Main</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['create']">Create</a></li>
+        <li><a href="#" (click)="logout($event)">Log out</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 custom-box" >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

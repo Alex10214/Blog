@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-* {
+*{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -13,10 +13,30 @@ body{
 
 .custom-header{
   background: #ebecef;
-  color: #5A5F74;
   height: 70px;
 }
 
-.custom-box{
-  background: #f7f7f7;
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+
+.buttons-full-width .btn{
+  width: 100%;
+}
+
+.custom-title-m10{
+  margin: 10px;
+}
+
+a{
+  color: black;
+}
+
+a:hover{
+  color: black;
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
 }
