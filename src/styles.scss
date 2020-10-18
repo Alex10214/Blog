@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: sans-serif;
+  background-color: white;
+}
+
+.custom-header{
+  background: #ebecef;
+  color: #5A5F74;
+  height: 70px;
+}
+
+.custom-box{
+  background: #f7f7f7;
+}
