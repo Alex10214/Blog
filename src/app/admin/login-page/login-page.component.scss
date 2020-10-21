@@ -7,6 +7,19 @@
 .form-control{
   border: none;
 }
+
 input, label{
   display:block;
 }
+
+.form-control.invalid {
+
+  & input{
+    border: 1px solid red;
+  }
+  & small, label{
+    color: red;
+  }
+}
+
+
