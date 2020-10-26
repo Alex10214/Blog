@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) { }
 
@@ -26,13 +26,12 @@ export class LoginPageComponent implements OnInit {
       ]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.minLength(5)
+        Validators.minLength(7)
       ])
     })
   }
 
   submit() {
-    console.log(this.form)
     if(this.form.invalid){
       return
     }

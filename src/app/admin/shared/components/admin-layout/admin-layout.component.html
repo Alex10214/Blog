@@ -4,7 +4,7 @@
       <nav>
         <a routerLink="/admin"><h1>Blog-admin</h1></a>
       </nav>
-      <ul>
+      <ul *ngIf="auth.authenticated()">
         <li routerLinkActive="active"><a [routerLink]="['dashboard']">Main</a></li>
         <li routerLinkActive="active"><a [routerLink]="['create']">Create</a></li>
         <li><a href="#" (click)="logout($event)">Log out</a></li>
