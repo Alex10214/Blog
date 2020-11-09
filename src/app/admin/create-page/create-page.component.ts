@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Post} from "../../shared/interfaces";
+import {PostsService} from "../../shared/posts.service";
 
 @Component({
   selector: 'app-create-page',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService: PostsService) {
+  }
+
+  form: FormGroup
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      text: new FormControl(null, Validators.required),
+      author: new FormControl(null, Validators.required),
+
+    })
+  }
+
+  addPost() {
+    if (this.form.invalid) {
+      return
+    }
+
+    const post: Post = {
+      title: this.form.value.title,
+      text: this.form.value.text,
+      author: this.form.value.author,
+      date: new Date()
+    }
+
+    this.postService.create(post).subscribe(() =>{
+      this.form.reset()
+    })
+
+    console.log(post)
+
   }
 
 }

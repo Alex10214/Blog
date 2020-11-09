@@ -1,1 +1,71 @@
-<p>create-page works!</p>
+<form class="card" [formGroup]="form" (ngSubmit)="addPost()">
+  <div class="row d-flex justify-content-center">
+    <h4 class="custom-title-mb10">Create new post</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-12 buttons-full-width-inp">
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+      >
+        <label for="title">Title:</label>
+        <input id="title" type="text" formControlName="title">
+        <div
+          class="validation"
+          *ngIf="form.get('title').touched && form.get('title').invalid"
+        >
+          <small *ngIf="form.get('title').errors.required">Enter post title.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 buttons-full-width-inp">
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('text').touched && form.get('text').invalid}"
+      >
+        <label for="text">Text:</label>
+        <textarea id="text" class="text" type="text" formControlName="text"></textarea>
+        <div
+          class="validation"
+          *ngIf="form.get('text').touched && form.get('text').invalid"
+        >
+          <small *ngIf="form.get('text').errors.required">Enter post content.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 buttons-full-width-inp">
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}"
+      >
+        <label for="author">Author:</label>
+        <input id="author" type="text" formControlName="author">
+        <div
+          class="validation"
+          *ngIf="form.get('author').touched && form.get('author').invalid"
+        >
+          <small *ngIf="form.get('author').errors.required">Enter the Author of this post.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center buttons-full-width">
+    <div class="col-3">
+      <button
+        type="submit"
+        class="btn btn-dark"
+        [disabled]="form.invalid"
+      >Create</button>
+    </div>
+  </div>
+</form>
+
+

@@ -1,4 +1,5 @@
 export interface Enviroment {
   apiKey: string,
-  production: boolean
+  production: boolean,
+  fireBaseDataBaseUrl: string
 }
