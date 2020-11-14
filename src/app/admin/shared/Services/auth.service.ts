@@ -7,7 +7,7 @@ import {catchError, tap} from "rxjs/operators";
 
 /*Работа с токенном*/
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
 
   public error$: Subject<string> = new Subject<string>()

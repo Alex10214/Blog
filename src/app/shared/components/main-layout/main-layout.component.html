@@ -1,9 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 custom-header d-flex align-items-center">
+    <div class="col-12 custom-header">
       <nav>
         <a routerLink="/"><h1>MY BLOG</h1></a>
       </nav>
+      <button class="btn btn-dark" [routerLink]="['/admin', 'login']">Admin</button>
     </div>
   </div>
   <div class="row">
