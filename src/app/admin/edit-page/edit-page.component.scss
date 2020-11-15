@@ -1,0 +1,35 @@
+.card{
+  max-width: 600px;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.form-control{
+  border: none;
+}
+
+input, label{
+  display:block;
+}
+
+.form-control.invalid {
+
+  & input, textarea{
+    border: 1px solid red;
+  }
+  & small, label{
+    color: red;
+  }
+}
+
+.text {
+  width: 100%;
+  resize: none;
+  height: 140px;
+  padding: 5px;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: center;
+}

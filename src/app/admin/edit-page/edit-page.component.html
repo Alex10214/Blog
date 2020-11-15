@@ -1,4 +1,4 @@
-<div *ngIf="form; else loading">
+<div class="card" *ngIf="form; else loading">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="row">
       <div class="col-12 buttons-full-width-inp">
@@ -35,7 +35,11 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Обновить</button>
+    <div class="row container-btn buttons-full-width">
+      <div class="col-3">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Update</button>
+      </div>
+    </div>
   </form>
 </div>
 

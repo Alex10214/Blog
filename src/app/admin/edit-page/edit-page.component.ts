@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PostsService} from "../../shared/posts.service";
 import {Post} from "../../shared/interfaces";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -16,7 +16,8 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostsService
+    private postService: PostsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +45,10 @@ export class EditPageComponent implements OnInit {
       text: this.form.value.text,
       title: this.form.value.title,
     }).subscribe(() => {
-
+      this.router.navigate(['/admin', 'dashboard'])
     })
+
+
   }
+
 }

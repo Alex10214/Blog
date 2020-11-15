@@ -26,7 +26,7 @@ export class AuthService {
   private setToken(response: FireBaseAuthResponse | null) {
     if (response) {
       const expDate = new Date( new Date().getTime() + +response.expiresIn * 1000) // получение времени завершения токена
-      console.log(expDate)
+      //console.log(expDate)
       localStorage.setItem('fb-token', response.idToken) // сохраняю айди токена
       localStorage.setItem('fb-token-exp', expDate.toString()) // сохраняю вренмя завершения токена
     } else {
