@@ -1,17 +1,23 @@
-<div class="container custom-container">
-  <div class="row d-flex justify-content-center">
-      <h2 class="custom-title-m10">title</h2>
-  </div>
-  <div class="row">
-    <p>Simple text</p>
-  </div>
-  <div class="row d-flex justify-content-between">
-    <strong>Author: Ivanon</strong>
-    <small>Date: simple date</small>
-  </div>
-  <div class="row d-flex justify-content-center buttons-full-width">
-    <div class="col-2">
-      <button routerLink="/" class="btn btn-dark">Back</button>
+<div *ngIf="newPost != null; else loading">
+  <div class="container custom-container">
+    <div class="row d-flex justify-content-center">
+      <h2 class="custom-title-m10">{{newPost.title}}</h2>
+    </div>
+    <div class="row">
+      <p>{{newPost.text}}</p>
+    </div>
+    <div class="row d-flex justify-content-between">
+      <strong>Author: {{newPost.author}}</strong>
+      <small>Date: {{newPost.date | date: 'dd.MM.yyyy'}}</small>
+    </div>
+    <div class="row d-flex justify-content-center buttons-full-width">
+      <div class="col-2">
+        <button routerLink="/" class="btn btn-dark">Back</button>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+<p>Loading...</p>
+</ng-template>
