@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {AuthService} from "../admin/shared/Services/auth.service";
 import {Router} from "@angular/router";
 import {catchError} from "rxjs/operators";
+
+import {AuthService} from "../admin/shared/Services/auth.service";
 
 @Injectable()
 export class Interceptor implements HttpInterceptor{
@@ -21,7 +22,7 @@ export class Interceptor implements HttpInterceptor{
         }
       })
     }
-    return next.handle(req)  // стрим
+    return next.handle(req)  // strim
       .pipe(
       catchError( (error: HttpErrorResponse) => {
         console.log('interceptor Error', error)
@@ -29,7 +30,7 @@ export class Interceptor implements HttpInterceptor{
           this.authService.logout()
           this.router.navigate(['/admin', 'login'], {
             queryParams: {
-              authFailer: true
+              authFailed: true
             }
           })
         }

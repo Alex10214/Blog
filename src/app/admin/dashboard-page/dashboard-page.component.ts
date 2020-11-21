@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {PostsService} from "../../shared/posts.service";
-import {Post} from "../../shared/interfaces";
 import {Subscription} from "rxjs";
+
+import {Post} from "../../shared/interfaces";
+import {PostsService} from "../../shared/posts.service";
 
 @Component({
   selector: 'app-dashboard-page',
@@ -20,7 +21,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.postsSubscription = this.postsService.getAll().subscribe(posts =>{
       this.posts = posts
-      //console.log('NEW RESPONSE', posts) // нормальные дынные из базы
+      //console.log('NEW RESPONSE', posts) // data validation
     })
   }
 

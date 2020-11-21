@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 import {PostsService} from "../../shared/posts.service";
 import {Post} from "../../shared/interfaces";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-page',
@@ -22,9 +23,9 @@ export class EditPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      //console.log('PARAMS', this.route.params) // смотрю что вообще покажет router params
-      //console.log('PARAMS', params) // прилетает обьект с ключем айдишника поста
-      //console.log('PARAMS id', params['id'])
+      //console.log('PARAMS', this.route.params) // checking what comes
+      //console.log('PARAMS', params) // check ID
+      //console.log('PARAMS id', params['id']) output ID
       return this.postService.getPostById(params['id']).subscribe((post: Post) => {
         this.post = post
         this.form = new FormGroup({
@@ -47,8 +48,6 @@ export class EditPageComponent implements OnInit {
     }).subscribe(() => {
       this.router.navigate(['/admin', 'dashboard'])
     })
-
-
   }
 
 }

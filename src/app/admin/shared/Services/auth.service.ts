@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {FireBaseAuthResponse, User} from "../../../shared/interfaces";
 import {Observable, Subject, throwError} from "rxjs";
-import {environment} from "../../../../environments/environment";
 import {catchError, tap} from "rxjs/operators";
 
-/*Работа с токенном*/
+import {environment} from "../../../../environments/environment";
+import {FireBaseAuthResponse, User} from "../../../shared/interfaces";
+
+/*Working with a token*/
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -15,8 +16,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login (user: User): Observable<any> {
-    user.returnSecureToken = true // добавляем флаг согласно документации farebase (доп инфо в интерфейсе)
-    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user) //ссылка на farebase в которой я указываю дальнейший ключ на мое приложение.
+    user.returnSecureToken = true // add a flag according to the documentation firebase
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
       .pipe(
         tap(this.setToken),
         catchError(this.handleError.bind(this)),
@@ -25,10 +26,10 @@ export class AuthService {
 
   private setToken(response: FireBaseAuthResponse | null) {
     if (response) {
-      const expDate = new Date( new Date().getTime() + +response.expiresIn * 1000) // получение времени завершения токена
+      const expDate = new Date( new Date().getTime() + +response.expiresIn * 1000) // getting token end time
       //console.log(expDate)
-      localStorage.setItem('fb-token', response.idToken) // сохраняю айди токена
-      localStorage.setItem('fb-token-exp', expDate.toString()) // сохраняю вренмя завершения токена
+      localStorage.setItem('fb-token', response.idToken) // save ID token
+      localStorage.setItem('fb-token-exp', expDate.toString()) // save token end time
     } else {
       localStorage.clear()
     }

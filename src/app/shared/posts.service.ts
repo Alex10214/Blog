@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {FbCreateResponse, Post} from "./interfaces";
-import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
+
+import {FbCreateResponseId, Post} from "./interfaces";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class PostsService {
 
   create(post: Post): Observable<Post> {
     return this.http.post(`${environment.fireBaseDataBaseUrl}/posts.json`, post)
-      .pipe(map((response: FbCreateResponse) => {
+      .pipe(map((response: FbCreateResponseId) => {
         //console.log('RESPONSE',response)
         const newPost: Post = {
           ...post,
@@ -29,8 +30,8 @@ export class PostsService {
   getAll(): Observable<any> {
     return this.http.get(`${environment.fireBaseDataBaseUrl}/posts.json`)
       .pipe(map((response: any) => {
-          //console.log('RESPONSE', response) // firebase возвращает что-то прям кривой обьект..
-          //console.log('RESPONSE', Object.keys(response)) // выдиляю ключи
+          //console.log('RESPONSE', response) // firebase return obscure object
+          //console.log('RESPONSE', Object.keys(response)) // get keys
           return Object.keys(response).map(key => ({
             ...response[key],
             id: key,

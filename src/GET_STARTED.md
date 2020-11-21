@@ -2,8 +2,7 @@
 2. npm install bootstrap
 3. npm start
 
-login admin: q@gmail.com
-password admin: 7777777
+This project is a small blog where you can read posts. You can also edit posts in the admin panel and create new posts. FireBase is used to storage data and verify login and password.
 
-Данный проект представляект собой небольшой блог, в котором можно читать посты. Так же в админке можно редактировать посты и создавать новые. В качасте хранения данных и проверки логина и пароля используется FireBase.
-
+login admin panel: q@gmail.com
+password admin panel: 7777777

@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 import {Post} from "../../shared/interfaces";
 import {PostsService} from "../../shared/posts.service";
 
@@ -39,9 +40,6 @@ export class CreatePageComponent implements OnInit {
     this.postService.create(post).subscribe(() =>{
       this.form.reset()
     })
-
-    console.log(post)
-
   }
 
 }
