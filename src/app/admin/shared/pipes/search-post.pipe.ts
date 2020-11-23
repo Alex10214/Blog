@@ -1,19 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import {Post} from "../../../shared/interfaces";
+import {Post} from '../../../shared/interfaces';
 
 @Pipe({
   name: 'searchPost'
 })
 export class SearchPostPipe implements PipeTransform {
 
-  transform(posts: Post[], search = '') {
+  transform(posts: Post[], search = ''): any {
     if (!search.trim()) {
-      return posts
+      return posts;
     }
-    return posts.filter(posts => {
-      return posts.title.toLowerCase().includes(search.toLowerCase())
-    })
+    // tslint:disable-next-line:no-shadowed-variable
+    return posts.filter( (posts) => {
+      return posts.title.toLowerCase().includes(search.toLowerCase());
+    });
   }
 
 }

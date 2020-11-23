@@ -1,6 +1,8 @@
 <div class="container" *ngIf="posts.length; else loading">
   <div class="form-control">
-    <input type="text" placeholder="Найти пост по названию" [(ngModel)]="searchPost">
+    <label>
+      <input type="text" placeholder="Найти пост по названию" [(ngModel)]="searchPost">
+    </label>
   </div>
   <div class="table-responsive">
     <table class="table table-striped">

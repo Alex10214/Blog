@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {Router} from "@angular/router";
-import {catchError} from "rxjs/operators";
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {Router} from '@angular/router';
+import {catchError} from 'rxjs/operators';
 
-import {AuthService} from "../admin/shared/Services/auth.service";
+import {AuthService} from '../admin/shared/Services/auth.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor{
@@ -20,22 +20,22 @@ export class Interceptor implements HttpInterceptor{
         setParams: {
           auth: this.authService.token
         }
-      })
+      });
     }
-    return next.handle(req)  // strim
+    return next.handle(req) /*strim*/
       .pipe(
       catchError( (error: HttpErrorResponse) => {
-        console.log('interceptor Error', error)
+        console.log('interceptor Error', error);
         if (error.status === 401) {
-          this.authService.logout()
+          this.authService.logout();
           this.router.navigate(['/admin', 'login'], {
             queryParams: {
               authFailed: true
             }
-          })
+          });
         }
-        return throwError(error)
+        return throwError(error);
       })
-      )
+      );
   }
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {AuthService} from "./auth.service";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs';
+import {AuthService} from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardService implements CanActivate{
+export class GuardService implements CanActivate {
 
   constructor(
     private authService: AuthService,
@@ -17,14 +17,14 @@ export class GuardService implements CanActivate{
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.authenticated()) {
-        return true
+        return true;
     } else {
-      this.authService.logout()
+      this.authService.logout();
       this.router.navigate( ['/admin', 'login'], {
         queryParams: {
           loginAgain: true
         }
-      })
+      });
     }
   }
 }

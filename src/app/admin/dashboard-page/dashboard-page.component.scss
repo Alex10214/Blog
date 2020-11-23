@@ -12,6 +12,11 @@
     background: whitesmoke;
     border: none;
 
+    label {
+      width: 100%;
+      margin: 0;
+    }
+
     input {
       width: 100%;
       padding: 5px;
